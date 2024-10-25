@@ -1,0 +1,30 @@
+from typing import List
+
+def calculateCompletionTime(n: int, m: int, data: List[int]) -> int:
+    
+    completion_times = [0] * n
+
+    for idx in data:
+        completion_times[idx - 1] += 1
+
+
+    # Initialize a list to keep track of completion times for each user
+    completion_times = [0] * n
+    
+    # Iterate through each task
+    for task_time in range(m):
+        user = data[task_time]  # Get the user proficient in the task
+        proficiency = user + 1  # Proficiency time (1-based index)
+        completion_times[user] += proficiency  # Update the user's completion time
+    
+    # Find the maximum completion time among all users
+    max_time = max(completion_times)
+    return max_time
+
+# Example usage
+n = 3  # Number of users
+m = 5  # Number of tasks
+data = [0, 1, 2, 0, 1]  # Array indicating user proficiency for each task
+
+result = calculateCompletionTime(n, m, data)
+print("Maximum time to complete all tasks:", result)

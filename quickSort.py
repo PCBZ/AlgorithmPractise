@@ -22,7 +22,6 @@ class Sort(object):
         self.item_quick_sort(array, j+1, end)
         
 if __name__ == "__main__":
-    print("&***")
     s = [0, 9, 7, 1, 3, 8]
     sort = Sort()
     sort.quick_sort(s)
