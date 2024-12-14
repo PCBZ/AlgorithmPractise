@@ -1,18 +1,29 @@
-def int2bin(t: int) -> str:
-    res = []
-    p = 1
-    while t:
-        k = t % pow(2, p)
-        res.insert(0, str(k))
-        t //= pow(2, p)
-    return ''.join(res)
+from typing import List
 
-def bin2int(s: str) -> int:
-    n = len(s)
-    res = 0
-    for i in range(n-1, -1, -1):
-        res += pow(2, n - 1 - i) * int(s[i])
-    return res
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
 
-# print(int2bin(8))
-print(bin2int("1010"))
+        lengths = {}  # Dictionary to store the lengths of sequences
+        max_length = 0
+
+        for num in nums:
+            if num not in lengths:  # If the number is not already processed
+                # Get the lengths of the left and right sequences
+                left = lengths.get(num - 1, 0)
+                right = lengths.get(num + 1, 0)
+
+                # Total sequence length
+                current_length = left + 1 + right
+                max_length = max(max_length, current_length)
+
+                # Update the boundaries of the sequence
+                lengths[num] = current_length
+                lengths[num - left] = current_length
+                lengths[num + right] = current_length
+
+        return max_length
+    
+nums = [100,4,200,1,3,2]
+print(Solution().longestConsecutive(nums))
