@@ -10,3 +10,5 @@ class Solution:
         return abs(next_x * next_x - num) < 0.0001
 
 print(Solution().isPerfectSquare(16))
+
+
