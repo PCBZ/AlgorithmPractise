@@ -8,10 +8,8 @@ class Solution:
             digit_count += 1
             range_count *= 10
         
-        print(digit_count, range_count, prev_num)
         idx = 10 ** (digit_count - 1) + ( n - prev_num - 1 ) // digit_count
         offset = (n - prev_num - 1) % digit_count
-        print(idx, offset)
         return int(str(idx)[offset])
 
 
