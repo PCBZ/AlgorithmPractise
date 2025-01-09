@@ -23,7 +23,6 @@ class Solution:
         return calorie
 
 
-
 if __name__ == "__main__":
     heights = [5, 2, 5]
     print(Solution.findMaximumCalories(heights))
