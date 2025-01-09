@@ -12,3 +12,4 @@ class Solution:
 print(Solution().isPerfectSquare(16))
 
 
+print((ord('z') - ord('a')) % 26)
