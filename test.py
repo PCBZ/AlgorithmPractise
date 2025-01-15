@@ -1,3 +1,5 @@
+import math
+
 class Solution:
     def isPerfectSquare(self, num: int) -> bool:
         x = num
@@ -13,3 +15,10 @@ print(Solution().isPerfectSquare(16))
 
 
 print((ord('z') - ord('a')) % 26)
+
+summ = 0
+for i in range(1, 11):
+    summ += i * (2 ** (i - 1))
+print(summ)
+
+print(math.log2(1))
