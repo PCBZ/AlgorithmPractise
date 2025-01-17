@@ -22,3 +22,6 @@ for i in range(1, 11):
 print(summ)
 
 print(math.log2(1))
+
+a = [1, 2, 3]
+print(a[1:], a[:-1])
