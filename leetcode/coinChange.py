@@ -10,6 +10,16 @@ class Solution:
                     dp[i] = min(dp[i], dp[i - coin] + 1)
         return -1 if dp[-1] == float('inf') else dp[-1]
     
+    def change(self, amount: int, coins: List[int]) -> int:
+        dp = [0] * (amount + 1)
+        dp[0] = 1
+        for coin in coins:
+            for i in range(coin, amount + 1):
+                dp[i] += dp[i - coin]
+        return dp[-1]
+    
 if __name__ == "__main__":
     coins = [1, 2, 5]
     print(Solution().coinChange(coins, 11))
+    amount = 3
+    print(Solution().change(amount, coins))
