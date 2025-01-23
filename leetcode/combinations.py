@@ -18,5 +18,5 @@ class Solution:
 
 
 if __name__ == "__main__":
-    n, k = 4, 2
+    n, k = 4, 4
     print(Solution().combine(n, k))
