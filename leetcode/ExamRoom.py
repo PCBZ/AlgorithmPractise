@@ -14,22 +14,19 @@ class ExamRoom:
         idx, insert_idx = -1, -1
         for i in range(len(self.seats)):
             end = self.seats[i]
-            if start == -1:
-                mid = start + 1
-            else:
-                mid = (start + end) // 2
-            dist = end - mid if start == -1 else mid - start
+            candidate = start + 1 if start == -1 else (start + end) // 2
+            dist = end - candidate if start == -1 else candidate - start
             if dist > longest:
                 longest = dist
                 insert_idx = i
-                idx = mid
+                idx = candidate
             start = end
         end = self.n
-        mid = end - 1
-        if mid - start > longest:
-            longest = mid - start
+        candidate = end - 1
+        if candidate - start > longest:
+            longest = candidate - start
             insert_idx = len(self.seats)
-            idx = mid
+            idx = candidate
         start = end
         
         self.seats.insert(insert_idx, idx)
