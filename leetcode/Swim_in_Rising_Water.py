@@ -7,7 +7,21 @@ from typing import List
 import heapq
 
 class Solution:
+    """
+    Solution class for the Swim in Rising Water problem.
+    Uses Dijkstra's algorithm to find the minimum time to reach the destination.
+    """
+
     def swimInWater(self, grid: List[List[int]]) -> int:
+        """
+        Find the minimum time required to swim from top-left to bottom-right.
+        
+        Args:
+            grid: 2D grid where each cell represents the water level at time t
+            
+        Returns:
+            Minimum time to reach the bottom-right corner
+        """
         m, n = len(grid), len(grid[0])
         visited = [[False] * n for _ in range(m)]
         heap = [(grid[0][0], 0, 0)]
@@ -24,7 +38,10 @@ class Solution:
                     visited[nr][nc] = True
                     heapq.heappush(heap, (grid[nr][nc], nr, nc))
 
+        # This should never be reached if the grid is valid
+        return -1
+
 
 if __name__ == "__main__":
-    grid = [[0, 100], [1, 2]]
-    print(Solution().swimInWater(grid))  # Example usage
+    test_grid = [[0, 100], [1, 2]]
+    print(Solution().swimInWater(test_grid))  # Example usage
