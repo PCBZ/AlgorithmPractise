@@ -3,7 +3,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pytest
-from leetcode.Swim_in_Rising_Water import Solution
+from leetcode.swim_in_rising_water import Solution
 
 
 class TestSwimInRisingWater:
