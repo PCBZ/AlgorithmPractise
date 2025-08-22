@@ -10,7 +10,7 @@ import pytest
 # Import the solution using importlib
 spec = importlib.util.spec_from_file_location(
     "accounts_merge",
-    "/Users/wenshuangzhou/Developer/AlgorithmPractise/leetcode/Accounts_Merge.py"
+    "/Users/wenshuangzhou/Developer/AlgorithmPractise/leetcode/accounts_merge.py"
 )
 accounts_merge = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(accounts_merge)
