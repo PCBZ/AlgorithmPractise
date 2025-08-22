@@ -1,0 +1,19 @@
+[MAIN]
+# Clear pylint cache before each run
+clear-cache-post-run=yes
+
+[MESSAGES CONTROL]
+# Disable LeetCode-specific naming violations
+disable=invalid-name,too-few-public-methods
+
+[REPORTS]
+# Include message's id in output
+include-ids=yes
+
+[FORMAT]
+# Maximum number of characters on a single line
+max-line-length=100
+
+[DESIGN]
+# Minimum number of public methods for a class
+min-public-methods=1
