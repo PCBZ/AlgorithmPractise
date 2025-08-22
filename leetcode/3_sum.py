@@ -1,7 +1,26 @@
+"""
+3Sum - Two Pointers Solution
+Source: https://leetcode.com/problems/3sum/description/
+"""
+
 from typing import List
 
 class Solution:
+    """
+    Solution class for the 3Sum problem.
+    Uses sorting and two pointers technique to find triplets that sum to zero.
+    """
+
     def threeSum(self, nums: List[int]) -> List[List[int]]:
+        """
+        Find all unique triplets in the array that sum to zero.
+        
+        Args:
+            nums: List of integers
+            
+        Returns:
+            List of unique triplets that sum to zero
+        """
         n = len(nums)
         nums.sort()
         res = set()
@@ -18,6 +37,7 @@ class Solution:
                     right -= 1
         return list(map(list, res))
 
+
 if __name__ == "__main__":
-    nums = [0, 0, 0]
-    print(Solution().threeSum(nums))
+    test_nums = [0, 0, 0]
+    print(Solution().threeSum(test_nums))
