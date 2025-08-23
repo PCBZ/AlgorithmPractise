@@ -1,8 +1,34 @@
+"""
+Ambiguous Coordinates - LeetCode Problem Solution
+Source: https://leetcode.com/problems/ambiguous-coordinates/description/
+
+Given a string representing parentheses and digits, return all possible
+interpretations as coordinate pairs with possible decimal points.
+"""
+
 from typing import List
 
+
 class Solution:
-    def ambiguousCoordinates(self, s: str) -> List[str]:
+    """
+    Solution class for the Ambiguous Coordinates problem.
+
+    Generates all valid coordinate interpretations by placing decimal points
+    in different positions while avoiding invalid number formats.
+    """
+
+    def ambiguousCoordinates(self, coordinate_str: str) -> List[str]:
+        """
+        Generate all possible coordinate interpretations.
+
+        Args:
+            coordinate_str: String in format "(digits)" to interpret as coordinates
+
+        Returns:
+            List of strings representing all valid coordinate interpretations
+        """
         def get_possibles(t: str) -> List[str]:
+            """Generate all valid number representations for a digit string."""
             res = []
             if t == format(float(t), "f").rstrip("0").rstrip("."):
                 res.append(t)
@@ -11,23 +37,27 @@ class Solution:
                 if n_t == format(float(n_t), "f").rstrip("0").rstrip("."):
                     res.append(n_t)
             return res
-        
-        s = s[1:-1]
+
+        # Remove parentheses
+        coordinate_str = coordinate_str[1:-1]
         res = []
-        n = len(s)
+        n = len(coordinate_str)
+
+        # Try all possible splits between x and y coordinates
         for i in range(n - 1):
-            for num1 in get_possibles(s[:i+1]):
-                for num2 in get_possibles(s[i+1:]):
+            for num1 in get_possibles(coordinate_str[:i+1]):
+                for num2 in get_possibles(coordinate_str[i+1:]):
                     res.append(f"({num1}, {num2})")
 
         return res
 
+
 if __name__ == "__main__":
-    s = "(0000001)"
-    print(Solution().ambiguousCoordinates(s))
-    # s = "(00011)"
-    # print(Solution().ambiguousCoordinates(s))
-    # s = "(0123)"
-    # print(Solution().ambiguousCoordinates(s))
-    # s = "(100)"
-    # print(Solution().ambiguousCoordinates(s))
+    test_str = "(0000001)"
+    print(Solution().ambiguousCoordinates(test_str))
+    # test_str = "(00011)"
+    # print(Solution().ambiguousCoordinates(test_str))
+    # test_str = "(0123)"
+    # print(Solution().ambiguousCoordinates(test_str))
+    # test_str = "(100)"
+    # print(Solution().ambiguousCoordinates(test_str))
