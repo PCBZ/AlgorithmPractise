@@ -3,6 +3,9 @@ Student Attendance Record II - Dynamic Programming Solution.
 
 This module contains a solution to determine the number of possible attendance 
 records of length n that would be considered rewardable.
+
+LeetCode Problem: https://leetcode.com/problems/student-attendance-record-ii/
+Problem Number: 552
 """
 
 
