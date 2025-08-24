@@ -10,7 +10,6 @@ Problem Number: 457
 
 from typing import List
 
-
 class Solution:
     """Solution class for Circular Array Loop problem."""
 

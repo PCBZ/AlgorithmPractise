@@ -9,7 +9,7 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'leetcode'))
 
 import pytest
-from CircularArrayLoop import Solution
+from circular_array_loop import Solution
 
 
 class TestCircularArrayLoop:
