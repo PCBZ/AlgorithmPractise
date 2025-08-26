@@ -11,9 +11,6 @@ import time
 # Add the parent directory to sys.path to import the solution
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-# Import using the actual file path structure
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'leetcode'))
-
 from evaluate_reverse_polish_notation import Solution
 
 
