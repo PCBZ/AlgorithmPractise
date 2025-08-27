@@ -1,31 +1,45 @@
-from typing import List, Set
+"""
+LeetCode Problem #802: Find Eventual Safe States
+URL: https://leetcode.com/problems/find-eventual-safe-states/
+"""
+from typing import List
+
 
 class Solution:
-    def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
-        
-        def is_safe_node(node: int, visited: Set[int]) -> bool:
-            if node in terminal_nodes or node in safe_nodes:
-                return True
-            if node in visited:
-                return False
-            visited.add(node)
-            ret = True
-            for next_node in graph[node]:
-                ret &= is_safe_node(next_node, visited.copy())
-            return ret
-        
-        terminal_nodes = set([i for i, nodes in enumerate(graph) if not nodes])
-        safe_nodes = set()
+    """Solution for finding eventual safe states in a directed graph."""
 
-        for node in range(len(graph)):
-            if node not in terminal_nodes and is_safe_node(node, set()):
-                safe_nodes.add(node)
-        
-        return list(safe_nodes | terminal_nodes)
+    def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
+        """Find all eventually safe nodes in the graph."""
+        num_nodes = len(graph)
+        # 0: unvisited, 1: visiting, 2: safe
+        state = [0] * num_nodes
+
+        def is_safe(node):
+            """Check if a node is eventually safe using DFS."""
+            if state[node] != 0:
+                return state[node] == 2
+
+            state[node] = 1  # Mark as visiting
+
+            # Check all neighbors
+            for neighbor in graph[node]:
+                if not is_safe(neighbor):
+                    return False
+
+            state[node] = 2  # Mark as safe
+            return True
+
+        result = []
+        for i in range(num_nodes):
+            if is_safe(i):
+                result.append(i)
+
+        return result
+
 
 if __name__ == "__main__":
-    # graph = [[1,2],[2,3],[5],[0],[5],[],[]]
-    graph = [[],[0,2,3,4],[3],[4],[]]
-    # graph = [[1,2,3,4],[1,2],[3,4],[0,4],[]]
-    print(Solution().eventualSafeNodes(graph))
-                    
+    # Example usage
+    test_graph = [[], [0, 2, 3, 4], [3], [4], []]
+    solution = Solution()
+    safe_nodes = solution.eventualSafeNodes(test_graph)
+    print(f"Eventually safe nodes: {safe_nodes}")
