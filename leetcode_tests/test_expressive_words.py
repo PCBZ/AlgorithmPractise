@@ -34,7 +34,10 @@ class TestExpressiveWords:
         target = "zzzzzyyyyy"
         words = ["zzyy", "zy", "zyy"]
         result = self.solution.expressiveWords(target, words)
-        expected = 3  # All can be made expressive
+        # Only "zy" is valid (1->5 for both z and y)
+        # "zzyy" invalid (2->5 not allowed)
+        # "zyy" invalid (2->5 for y not allowed)
+        expected = 1
         assert result == expected
 
     def test_no_expressive_words(self):
@@ -50,7 +53,8 @@ class TestExpressiveWords:
         target = "aaa"
         words = ["a", "aa", "aaa"]
         result = self.solution.expressiveWords(target, words)
-        expected = 1  # Only "aaa" matches (no extension needed)
+        # "a" can extend to "aaa", "aa" cannot extend, "aaa" exact match
+        expected = 2
         assert result == expected
 
     def test_multiple_character_groups(self):
@@ -122,10 +126,12 @@ class TestExpressiveWords:
         target = "heeellooo"
         words = ["hello", "heelo", "helo", "heeello", "hellooo"]
         result = self.solution.expressiveWords(target, words)
-        # "hello" can be extended: h->h, e->eee, l->ll, o->ooo
-        # "heelo" cannot: would need e->eee and l->ll and o->ooo
-        # Check each word manually for correctness
-        expected = 1
+        # "hello": h(1)->h(1), e(1)->eee(3), l(2)->ll(2), o(1)->ooo(3) ✓
+        # "heelo": ee(2)->eee(3) ✗ (2 cannot extend)
+        # "helo": l(1)->ll(2) ✗ (1->2 invalid, need ≥3)
+        # "heeello": all exact or valid extensions ✓
+        # "hellooo": all exact or valid extensions ✓
+        expected = 3
         assert result == expected
 
     def test_alternating_characters(self):
@@ -141,10 +147,10 @@ class TestExpressiveWords:
         target = "aaabbc"
         words = ["abc", "aabbbc", "aaabbbc"]
         result = self.solution.expressiveWords(target, words)
-        # "abc" -> "aaabbc": a->aaa (valid), b->bb (invalid, 2<3), c->c
-        # "aabbbc" -> "aaabbc": aa->aaa (invalid, 3<2), bb->bb (ok), c->c
-        # Need to check the logic carefully
-        expected = 1  # Only "abc" should work
+        # "abc": b(1)->bb(2) ✗ (1->2 invalid, need ≥3)
+        # "aabbbc": aa(2)->aaa(3) ✗ (2 cannot extend)
+        # "aaabbbc": bbb(3)->bb(2) ✗ (3>2 invalid)
+        expected = 0  # None work
         assert result == expected
 
     def test_consecutive_same_groups(self):
@@ -184,8 +190,10 @@ class TestExpressiveWords:
         target = "abbbaac"
         words = ["abc", "abac", "abbac"]
         result = self.solution.expressiveWords(target, words)
-        # Verify each case manually
-        expected = 2  # "abc" and "abbac" should work
+        # "abc": length/structure mismatch
+        # "abac": a(1)->aa(2) ✗ (1->2 invalid)
+        # "abbac": bb(2)->bbb(3) ✗ (2 cannot extend)
+        expected = 0  # None work
         assert result == expected
 
     def test_return_type_and_constraints(self):
@@ -272,8 +280,8 @@ class TestExpressiveWords:
         target = "aaaaaaa"
         words = ["a", "aa", "aaa", "aaaa", "aaaaa"]
         result = self.solution.expressiveWords(target, words)
-        # All should be valid as they can extend to 7 a's
-        expected = 5
+        # a(1)->a(7) ✓, aa(2) cannot extend ✗, aaa(3)->a(7) ✓, etc.
+        expected = 4
         assert result == expected
 
     def test_word_longer_than_target_invalid(self):
