@@ -10,7 +10,7 @@ import os
 # Add the parent directory to the path to import the solution
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from leetcode.koko_eat_bananas import Solution
+from leetcode.koko_eating_bananas import Solution
 
 
 class TestKokoEatingBananas:
