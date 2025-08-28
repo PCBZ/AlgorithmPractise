@@ -13,7 +13,7 @@ sys.path.insert(0, parent_dir)
 import importlib.util
 spec = importlib.util.spec_from_file_location(
     "solution", 
-    os.path.join(parent_dir, "leetcode", "Flip_String_to_Monotone_Increasing.py")
+    os.path.join(parent_dir, "leetcode", "flip_string_to_monotone_increasing.py")
 )
 solution_module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(solution_module)
