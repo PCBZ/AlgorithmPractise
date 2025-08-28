@@ -25,13 +25,6 @@ class Solution:
 
         Returns:
             Maximum rectangle area
-
-        Examples:
-            >>> solution = Solution()
-            >>> solution.largestRectangleArea([2, 1, 5, 6, 2, 3])
-            10
-            >>> solution.largestRectangleArea([2, 4])
-            4
         """
         max_area = 0
         stack = []
