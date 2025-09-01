@@ -6,11 +6,24 @@ Tests the algorithm for finding longest word that can be built one character at 
 import pytest
 import sys
 import os
+import importlib.util
 
 # Add the parent directory to the path to allow imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from leetcode.longest_word_in_dictionary import Solution
+try:
+    from leetcode.longest_word_in_dictionary import Solution
+except ImportError:
+    # Fallback for environments where package import fails
+    module_path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        "leetcode",
+        "longest_word_in_dictionary.py"
+    )
+    spec = importlib.util.spec_from_file_location("longest_word_in_dictionary", module_path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    Solution = module.Solution
 
 
 class TestLongestWordInDictionary:
