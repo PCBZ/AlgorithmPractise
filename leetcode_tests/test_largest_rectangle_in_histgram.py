@@ -4,19 +4,8 @@ Tests the monotonic stack algorithm for finding maximum rectangle area.
 """
 
 import pytest
-import sys
-import os
 
-# Add the parent directory to the path to import the solution
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-import importlib.util
-spec = importlib.util.spec_from_file_location('solution',
-    os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    'leetcode', 'Largest_Rectangle_In_Histgram.py'))
-solution_module = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(solution_module)
-Solution = solution_module.Solution
+from leetcode.largest_rectangle_in_histgram import Solution
 
 
 class TestLargestRectangleInHistogram:
