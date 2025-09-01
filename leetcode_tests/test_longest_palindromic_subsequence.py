@@ -2,6 +2,10 @@
 Comprehensive test suite for LeetCode Problem #516: Longest Palindromic Subsequence.
 Tests the dynamic programming solution for finding longest palindromic subsequence.
 """
+import sys
+import os
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pytest
 from leetcode.longest_palindromic_subsequence import Solution
