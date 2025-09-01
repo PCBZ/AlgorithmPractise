@@ -2,12 +2,14 @@
 Comprehensive test suite for LeetCode Problem #845: Longest Mountain in Array.
 Tests the one-pass algorithm for finding the longest mountain subarray.
 """
+
+import pytest
 import sys
 import os
 
+# Add the parent directory to the path to allow imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-import pytest
 from leetcode.longest_mountain_in_array import Solution
 
 
