@@ -4,9 +4,7 @@ Tests the monotonic stack algorithm for finding maximum rectangle area.
 """
 
 import pytest
-import os
 
-parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 from leetcode.largest_rectangle_in_histgram import Solution
 
 
