@@ -12,7 +12,7 @@ import importlib.util
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 try:
-    from leetcode.longest_repeating_character_replacement_01 import Solution
+    from leetcode.longest_repeating_character_replacement import Solution
 except ImportError:
     # Fallback for environments where package import fails
     module_path = os.path.join(
