@@ -2,6 +2,10 @@
 Comprehensive test suite for LeetCode Problem #720: Longest Word in Dictionary.
 Tests the algorithm for finding longest word that can be built one character at a time.
 """
+import sys
+import os
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pytest
 from leetcode.longest_word_in_dictionary import Solution
