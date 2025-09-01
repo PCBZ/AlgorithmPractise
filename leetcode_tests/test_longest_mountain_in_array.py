@@ -6,24 +6,11 @@ Tests the one-pass algorithm for finding the longest mountain subarray.
 import pytest
 import sys
 import os
-import importlib.util
 
 # Add the parent directory to the path to allow imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-try:
-    from leetcode.longest_mountain_in_array import Solution
-except ImportError:
-    # Fallback for environments where package import fails
-    module_path = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-        "leetcode",
-        "longest_mountain_in_array.py"
-    )
-    spec = importlib.util.spec_from_file_location("longest_mountain_in_array", module_path)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    Solution = module.Solution
+from leetcode.longest_mountain_in_array import Solution
 
 
 class TestLongestMountainInArray:
