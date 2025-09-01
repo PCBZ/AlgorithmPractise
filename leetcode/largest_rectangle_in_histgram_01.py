@@ -6,11 +6,8 @@ Solution using monotonic stack to find the largest rectangle area in histogram.
 Time Complexity: O(n) where n is the number of bars
 Space Complexity: O(n) for the stack
 """
-# pylint: disable=invalid-name
 
 from typing import List
-
-# pylint: disable=too-few-public-methods
 
 
 class Solution:
