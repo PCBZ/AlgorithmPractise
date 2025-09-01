@@ -4,11 +4,6 @@ Tests the heap-based algorithm for finding the kth smallest element efficiently.
 """
 
 import pytest
-import sys
-import os
-
-# Add the parent directory to the path to import the solution
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from leetcode.kth_smallest_element_in_a_sorted_matrix import Solution
 

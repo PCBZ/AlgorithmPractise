@@ -4,19 +4,8 @@ Tests the BFS algorithm for finding minimum swaps to transform strings.
 """
 
 import pytest
-import sys
-import os
 
-# Add the parent directory to the path to import the solution
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-import importlib.util
-spec = importlib.util.spec_from_file_location('solution',
-    os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    'leetcode', 'k_similar_strings.py'))
-solution_module = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(solution_module)
-Solution = solution_module.Solution
+from leetcode.k_similarity import Solution
 
 
 class TestKSimilarity:
