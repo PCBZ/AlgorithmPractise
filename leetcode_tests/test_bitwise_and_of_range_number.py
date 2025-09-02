@@ -2,14 +2,9 @@
 Test cases for Bitwise AND of Numbers Range problem.
 """
 
-import os
-import sys
-
-# Add the leetcode directory to the path for importing
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'leetcode'))
 
 import pytest
-from bitwise_and_of_range_number import Solution
+from leetcode.bitwise_and_of_range_number import Solution
 
 
 class TestBitwiseAndOfRange:

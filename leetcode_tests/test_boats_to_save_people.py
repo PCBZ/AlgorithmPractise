@@ -2,14 +2,8 @@
 Test cases for Boats to Save People problem.
 """
 
-import os
-import sys
-
-# Add the leetcode directory to the path for importing
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'leetcode'))
-
 import pytest
-from boats_to_save_people import Solution
+from leetcode.boats_to_save_people import Solution
 
 
 class TestBoatsToSavePeople:

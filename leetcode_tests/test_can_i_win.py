@@ -2,14 +2,8 @@
 Test cases for Can I Win problem.
 """
 
-import os
-import sys
-
-# Add the leetcode directory to the path for importing
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'leetcode'))
-
 import pytest
-from can_i_win import Solution
+from leetcode.can_i_win import Solution
 
 
 class TestCanIWin:

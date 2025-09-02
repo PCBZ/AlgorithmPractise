@@ -3,20 +3,10 @@ Unit tests for basic_calculator.py
 Tests the Basic Calculator solution with different operators and expressions.
 """
 
-import sys
-import os
-import importlib.util
 import pytest
 
-# Import the solution using importlib with relative path
-spec = importlib.util.spec_from_file_location(
-    "basic_calculator",
-    os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "leetcode", "basic_calculator.py")
-)
-basic_calculator = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(basic_calculator)
+from leetcode.basic_calculator import Solution
 
-Solution = basic_calculator.Solution
 
 
 class TestBasicCalculator:
