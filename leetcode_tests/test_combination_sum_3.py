@@ -3,12 +3,7 @@ Comprehensive tests for LeetCode Problem #216: Combination Sum III.
 Tests the backtracking algorithm for finding k-number combinations that sum to target.
 """
 
-import os
-import sys
 import pytest
-
-# Add the parent directory to the path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.combination_sum_3 import Solution
 

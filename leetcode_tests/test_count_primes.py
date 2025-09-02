@@ -4,13 +4,9 @@ Comprehensive test suite for LeetCode Problem #204: Count Primes
 Tests the countPrimes method which counts prime numbers less than n
 using the Sieve of Eratosthenes algorithm.
 """
-import os
-import sys
 import time
 import math
 
-# Add the parent directory to sys.path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.count_primes import Solution
 

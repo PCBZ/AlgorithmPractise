@@ -4,12 +4,7 @@ Comprehensive test suite for LeetCode Problem #38: Count and Say
 Tests the countAndSay method which generates the nth term in the
 count-and-say sequence using run-length encoding.
 """
-import os
-import sys
 import time
-
-# Add the parent directory to sys.path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.count_and_say import Solution
 

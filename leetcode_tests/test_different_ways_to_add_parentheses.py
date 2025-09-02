@@ -4,12 +4,7 @@ Comprehensive test suite for LeetCode Problem #241: Different Ways to Add Parent
 Tests the diffWaysToCompute method which generates all possible results from
 computing different parenthesizations of an arithmetic expression.
 """
-import os
-import sys
 import time
-
-# Add the parent directory to sys.path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.different_ways_to_add_parentheses import Solution
 

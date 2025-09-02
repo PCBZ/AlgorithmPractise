@@ -4,11 +4,6 @@ Comprehensive test suite for LeetCode Problem #138: Copy List with Random Pointe
 Tests the copyRandomList method which creates a deep copy of a linked list
 where each node has an additional random pointer.
 """
-import os
-import sys
-
-# Add the parent directory to sys.path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.copy_list_with_random_pointer import Solution, Node
 

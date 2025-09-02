@@ -3,12 +3,7 @@ Comprehensive tests for LeetCode Problem #39: Combination Sum.
 Tests the backtracking algorithm for finding combinations with unlimited reuse.
 """
 
-import os
-import sys
 import pytest
-
-# Add the parent directory to the path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.combination_sum import Solution
 

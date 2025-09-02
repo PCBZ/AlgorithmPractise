@@ -4,12 +4,7 @@ Comprehensive test suite for LeetCode Problem #394: Decode String
 Tests the decodeString method which decodes encoded strings with nested
 brackets and repetition counts using a stack-based approach.
 """
-import os
-import sys
 import time
-
-# Add the parent directory to sys.path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.decode_string import Solution
 

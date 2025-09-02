@@ -2,14 +2,8 @@
 Test cases for Circular Array Loop problem.
 """
 
-import os
-import sys
-
-# Add the leetcode directory to the path for importing
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'leetcode'))
-
 import pytest
-from circular_array_loop import Solution
+from leetcode.circular_array_loop import Solution
 
 
 class TestCircularArrayLoop:

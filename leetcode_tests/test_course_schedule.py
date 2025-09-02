@@ -4,12 +4,6 @@ Comprehensive test suite for LeetCode Problem #207: Course Schedule
 Tests the canFinish method which determines if all courses can be completed
 given prerequisite dependencies using topological sorting (Kahn's algorithm).
 """
-import os
-import sys
-import time
-
-# Add the parent directory to sys.path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.course_schedule import Solution
 

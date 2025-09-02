@@ -3,13 +3,8 @@ Comprehensive tests for LeetCode Problem #77: Combinations.
 Tests the backtracking algorithm for generating k-size combinations from range [1, n].
 """
 
-import os
-import sys
 import pytest
 from math import comb
-
-# Add the parent directory to the path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.combinations import Solution
 

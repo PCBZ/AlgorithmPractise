@@ -4,13 +4,7 @@ Comprehensive test suite for LeetCode Problem #315: Count of Smaller Numbers Aft
 Tests the countSmaller method which counts how many numbers after each element
 are smaller than that element using a Binary Search Tree approach.
 """
-import os
-import sys
 import time
-import random
-
-# Add the parent directory to sys.path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.count_of_smaller_numbers_after_self import Solution
 

@@ -3,12 +3,7 @@ Comprehensive tests for LeetCode Problem #40: Combination Sum II.
 Tests the backtracking algorithm for finding unique combinations with duplicates.
 """
 
-import os
-import sys
 import pytest
-
-# Add the parent directory to the path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.combination_sum_2 import Solution
 

@@ -4,12 +4,7 @@ Comprehensive test suite for LeetCode Problem #472: Concatenated Words
 Tests the findAllConcatenatedWordsInADict method which finds all words
 that can be formed by concatenating at least two shorter words from the input.
 """
-import os
-import sys
 import time
-
-# Add the parent directory to sys.path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.concatenated_words import Solution
 

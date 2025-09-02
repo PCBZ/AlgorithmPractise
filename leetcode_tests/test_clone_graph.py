@@ -3,12 +3,7 @@ Comprehensive tests for LeetCode Problem #133: Clone Graph.
 Tests the graph cloning functionality with DFS approach.
 """
 
-import os
-import sys
 import pytest
-
-# Add the parent directory to the path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.clone_graph import Solution, Node
 
