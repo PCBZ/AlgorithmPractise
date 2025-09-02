@@ -3,20 +3,9 @@ Unit tests for ambiguous_coordinates.py
 Tests the Ambiguous Coordinates solution.
 """
 
-import sys
-import os
-import importlib.util
 import pytest
 
-# Import the solution using importlib with relative path
-spec = importlib.util.spec_from_file_location(
-    "ambiguous_coordinates",
-    os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "leetcode", "ambiguous_coordinates.py")
-)
-ambiguous_coordinates = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(ambiguous_coordinates)
-
-Solution = ambiguous_coordinates.Solution
+from leetcode.ambiguous_coordinates import Solution
 
 
 class TestAmbiguousCoordinates:

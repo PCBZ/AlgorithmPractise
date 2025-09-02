@@ -3,20 +3,9 @@ Unit tests for additive_number.py
 Tests the Additive Number solution using backtracking.
 """
 
-import sys
-import os
-import importlib.util
 import pytest
 
-# Import the solution using importlib with relative path
-spec = importlib.util.spec_from_file_location(
-    "additive_number",
-    os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "leetcode", "additive_number.py")
-)
-additive_number = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(additive_number)
-
-Solution = additive_number.Solution
+from leetcode.additive_number import Solution
 
 
 class TestAdditiveNumber:

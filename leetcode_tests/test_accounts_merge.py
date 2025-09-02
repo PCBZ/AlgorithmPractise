@@ -3,20 +3,9 @@ Unit tests for Accounts_Merge.py
 Tests the Union Find solution for merging accounts with common emails.
 """
 
-import sys
-import os
-import importlib.util
 import pytest
 
-# Import the solution using importlib with relative path
-spec = importlib.util.spec_from_file_location(
-    "accounts_merge",
-    os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "leetcode", "accounts_merge.py")
-)
-accounts_merge = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(accounts_merge)
-
-Solution = accounts_merge.Solution
+from leetcode.accounts_merge import Solution
 
 
 class TestAccountsMerge:
