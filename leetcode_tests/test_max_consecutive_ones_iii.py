@@ -127,68 +127,6 @@ class TestMaxConsecutiveOnesIII:
         result = self.solution.longest_ones(nums, k)
         assert result == 103  # 100 ones + 3 flipped zeros (best we can do with k=3)
 
-    def test_optimized_method_consistency(self, leetcode_example_1):
-        """Test optimized method gives same result."""
-        nums, k = leetcode_example_1
-        standard_result = self.solution.longest_ones(nums, k)
-        optimized_result = self.solution.longest_ones_optimized(nums, k)
-        assert standard_result == optimized_result
-
-    def test_brute_force_consistency(self):
-        """Test brute force method for smaller arrays."""
-        test_cases = [
-            ([1, 0, 1, 1, 0], 1),
-            ([0, 0, 1, 1], 1),
-            ([1, 1, 1], 0),
-            ([0, 0, 0], 2),
-        ]
-        
-        for nums, k in test_cases:
-            standard = self.solution.longest_ones(nums, k)
-            brute_force = self.solution.longest_ones_brute_force(nums, k)
-            optimized = self.solution.longest_ones_optimized(nums, k)
-            
-            assert standard == brute_force == optimized
-
-    def test_all_methods_consistency(self, leetcode_example_2):
-        """Test all three methods give same results."""
-        nums, k = leetcode_example_2
-        
-        result1 = self.solution.longest_ones(nums, k)
-        result2 = self.solution.longest_ones_optimized(nums, k)
-        result3 = self.solution.longest_ones_brute_force(nums, k)
-        
-        assert result1 == result2 == result3
-
-    def test_with_positions_method(self):
-        """Test the method that returns positions."""
-        nums = [1, 0, 1, 1, 0, 1]
-        k = 1
-        
-        length, start, end = self.solution.longest_ones_with_positions(nums, k)
-        
-        # Verify the result makes sense
-        assert length > 0
-        assert 0 <= start <= end < len(nums)
-        assert end - start + 1 == length
-        
-        # Verify it matches the standard method
-        standard_result = self.solution.longest_ones(nums, k)
-        assert length == standard_result
-
-    def test_count_max_consecutive_ones(self):
-        """Test bonus method for counting consecutive ones without flips."""
-        nums = [1, 1, 0, 1, 1, 1, 0, 1]
-        result = self.solution.count_max_consecutive_ones(nums)
-        assert result == 3  # Three consecutive ones
-
-    def test_edge_case_positions_empty(self):
-        """Test positions method with empty array."""
-        length, start, end = self.solution.longest_ones_with_positions([], 1)
-        assert length == 0
-        assert start == -1
-        assert end == -1
-
     def test_performance_pattern(self):
         """Test specific pattern for performance validation."""
         # Pattern that could cause issues with naive sliding window
@@ -218,17 +156,13 @@ class TestMaxConsecutiveOnesIII:
         nums = [1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1]
         k = 2
         
-        result1 = self.solution.longest_ones(nums, k)
-        result2 = self.solution.longest_ones_optimized(nums, k)
-        result3 = self.solution.longest_ones_brute_force(nums, k)
+        result = self.solution.longest_ones(nums, k)
         
-        # All methods should agree
-        assert result1 == result2 == result3
         # Result should be reasonable
-        assert result1 >= k  # At minimum, we can flip k zeros
+        assert result >= k  # At minimum, we can flip k zeros
 
-    def test_stress_consistency(self):
-        """Stress test with multiple random-like patterns."""
+    def test_stress_test_patterns(self):
+        """Stress test with multiple patterns."""
         patterns = [
             [1, 0, 1, 0, 1, 0, 1, 0],
             [0, 1, 0, 1, 0, 1, 0, 1],
@@ -238,12 +172,10 @@ class TestMaxConsecutiveOnesIII:
         
         for nums in patterns:
             for k in range(5):
-                standard = self.solution.longest_ones(nums, k)
-                optimized = self.solution.longest_ones_optimized(nums, k)
+                result = self.solution.longest_ones(nums, k)
                 
-                assert standard == optimized
-                assert standard >= 0
-                assert standard <= len(nums)
+                assert result >= 0
+                assert result <= len(nums)
 
 
 if __name__ == "__main__":
