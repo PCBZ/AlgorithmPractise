@@ -3,21 +3,15 @@ Test cases for 01 Matrix problem
 Source: https://leetcode.com/problems/01-matrix/description/
 """
 
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 import pytest
-
-# Import using importlib since module name starts with number
 import importlib.util
 import sys
 import os
 
 # Add the parent directory to sys.path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Import the module with numeric name
+# Import the 01_matrix module (numeric filename requires importlib)
 spec = importlib.util.spec_from_file_location(
     "matrix_01", 
     os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "leetcode", "01_matrix.py")
