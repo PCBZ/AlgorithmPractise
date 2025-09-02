@@ -3,23 +3,9 @@ Comprehensive tests for Max Consecutive Ones III problem.
 
 Tests all implementations: sliding window, optimized, and brute force approaches.
 """
-import copy
 import pytest
-import sys
-import os
 
-# Add parent directory to path for imports
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-# Import using importlib to handle module name with numbers
-import importlib.util
-spec = importlib.util.spec_from_file_location(
-    "max_consecutive_ones_iii", 
-    "/Users/wenshuangzhou/Developer/AlgorithmPractise/leetcode/Max_Consecutive_Ones_III.py"
-)
-max_consecutive_module = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(max_consecutive_module)
-Solution = max_consecutive_module.Solution
+from leetcode.max_consecutive_ones_III import Solution
 
 
 class TestMaxConsecutiveOnesIII:
