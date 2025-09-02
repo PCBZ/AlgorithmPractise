@@ -2,14 +2,8 @@
 Test cases for Student Attendance Record II problem.
 """
 
-import os
-import sys
-
-# Add the leetcode directory to the path for importing
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'leetcode'))
-
 import pytest
-from student_attendance_record_II import Solution
+from leetcode.student_attendance_record_II import Solution
 
 
 class TestStudentAttendanceRecordII:

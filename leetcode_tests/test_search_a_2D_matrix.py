@@ -3,24 +3,9 @@ Test cases for Search a 2D Matrix problem
 Source: https://leetcode.com/problems/search-a-2d-matrix/description/
 """
 
-import sys
-import os
-import importlib.util
-
-# Add the parent directory to sys.path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 import pytest
 
-# Import the module with snake_case name
-spec = importlib.util.spec_from_file_location(
-    "search_a_2D_matrix", 
-    os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "leetcode", "search_a_2D_matrix.py")
-)
-search_module = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(search_module)
-Solution = search_module.Solution
-
+from leetcode.search_a_2D_matrix import Solution
 
 class TestSearchMatrix:
     def setup_method(self):
