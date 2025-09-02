@@ -2,22 +2,8 @@
 Test cases for LeetCode Problem #592: Fraction Addition and Subtraction
 """
 import unittest
-import sys
-import os
 
-# Add the parent directory to the Python path
-parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, parent_dir)
-
-# Import using importlib
-import importlib.util
-spec = importlib.util.spec_from_file_location(
-    "solution",
-    os.path.join(parent_dir, "leetcode", "fraction_addition_and_subtraction.py")
-)
-solution_module = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(solution_module)
-Solution = solution_module.Solution
+from leetcode.fraction_addition_and_subtraction import Solution
 
 
 class TestFractionAdditionAndSubtraction(unittest.TestCase):

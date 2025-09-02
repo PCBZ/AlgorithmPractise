@@ -5,13 +5,8 @@ Substring with Concatenation of All Words
 Tests the findSubstring method which finds all starting indices of substrings
 that are concatenations of all given words exactly once.
 """
-import os
-import sys
 import time
 from collections import Counter
-
-# Add the parent directory to sys.path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.substring_with_concatenation_of_all_words import Solution
 

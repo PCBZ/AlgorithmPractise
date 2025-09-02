@@ -4,12 +4,6 @@ Tests the algorithm for finding longest word that can be built one character at 
 """
 
 import pytest
-import sys
-import os
-
-# Add the parent directory to the path to allow imports
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 
 from leetcode.longest_word_in_dictionary import Solution
 

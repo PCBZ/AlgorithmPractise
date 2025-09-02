@@ -4,11 +4,6 @@ Tests the sliding window solution for finding longest substring with at most k r
 """
 
 import pytest
-import sys
-import os
-
-# Add the parent directory to the path to allow imports
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from leetcode.longest_repeating_character_replacement import Solution
 

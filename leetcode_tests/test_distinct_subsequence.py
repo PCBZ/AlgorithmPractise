@@ -4,12 +4,7 @@ Comprehensive test suite for LeetCode Problem #115: Distinct Subsequences
 Tests the numDistinct method which counts the number of distinct subsequences
 of string s that equal string t using dynamic programming.
 """
-import os
-import sys
 import time
-
-# Add the parent directory to sys.path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.distinct_subsequence import Solution
 

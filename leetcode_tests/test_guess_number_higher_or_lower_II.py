@@ -2,22 +2,8 @@
 Test cases for LeetCode Problem #375: Guess Number Higher or Lower II
 """
 import unittest
-import sys
-import os
 
-# Add the parent directory to the Python path
-parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, parent_dir)
-
-# Import using importlib
-import importlib.util
-spec = importlib.util.spec_from_file_location(
-    "solution",
-    os.path.join(parent_dir, "leetcode", "guess_number_higher_or_lower_II.py")
-)
-solution_module = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(solution_module)
-Solution = solution_module.Solution
+from leetcode.guess_number_higher_or_lower_II import Solution
 
 
 class TestGuessNumberHigherOrLowerII(unittest.TestCase):

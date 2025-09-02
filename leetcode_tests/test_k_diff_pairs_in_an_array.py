@@ -4,11 +4,6 @@ Tests the hash-based algorithm for finding unique k-diff pairs.
 """
 
 import pytest
-import sys
-import os
-
-# Add the parent directory to the path to import the solution
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from leetcode.k_diff_pairs_in_an_array import Solution
 

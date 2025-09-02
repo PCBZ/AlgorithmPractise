@@ -4,12 +4,7 @@ Comprehensive test suite for LeetCode Problem #150: Evaluate Reverse Polish Nota
 Tests the evalRPN method which evaluates arithmetic expressions written
 in Reverse Polish Notation using a stack-based approach.
 """
-import os
-import sys
 import time
-
-# Add the parent directory to sys.path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.evaluate_reverse_polish_notation import Solution
 

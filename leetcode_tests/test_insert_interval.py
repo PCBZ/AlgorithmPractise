@@ -4,11 +4,6 @@ Tests the interval insertion and merging algorithm with various scenarios.
 """
 
 import pytest
-import sys
-import os
-
-# Add the parent directory to the path to import the solution
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from leetcode.insert_interval import Solution
 

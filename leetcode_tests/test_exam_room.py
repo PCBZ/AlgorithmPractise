@@ -4,12 +4,7 @@ Comprehensive test suite for LeetCode Problem #855: Exam Room
 Tests the ExamRoom class which manages student seating to maximize
 distance to the closest person in the exam room.
 """
-import os
-import sys
 import time
-
-# Add the parent directory to sys.path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.exam_room import ExamRoom
 

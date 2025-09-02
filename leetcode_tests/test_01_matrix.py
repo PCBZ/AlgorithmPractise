@@ -5,17 +5,9 @@ Source: https://leetcode.com/problems/01-matrix/description/
 
 import pytest
 import importlib.util
-import sys
-import os
-
-# Add the parent directory to sys.path
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Import the 01_matrix module (numeric filename requires importlib)
-spec = importlib.util.spec_from_file_location(
-    "matrix_01", 
-    os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "leetcode", "01_matrix.py")
-)
+spec = importlib.util.spec_from_file_location("matrix_01", "leetcode/01_matrix.py")
 matrix_01 = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(matrix_01)
 Solution = matrix_01.Solution

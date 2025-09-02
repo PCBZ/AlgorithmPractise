@@ -3,20 +3,11 @@ Test cases for 3Sum problem
 Source: https://leetcode.com/problems/3sum/description/
 """
 
-import sys
-import os
 import importlib.util
-
-# Add the parent directory to sys.path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 import pytest
 
 # Import the module with numeric name
-spec = importlib.util.spec_from_file_location(
-    "three_sum", 
-    os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "leetcode", "3_sum.py")
-)
+spec = importlib.util.spec_from_file_location("three_sum", "leetcode/3_sum.py")
 three_sum_module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(three_sum_module)
 Solution = three_sum_module.Solution

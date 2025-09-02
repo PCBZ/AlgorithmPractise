@@ -4,12 +4,7 @@ Comprehensive test suite for LeetCode Problem #649: Dota2 Senate
 Tests the predictPartyVictory method which simulates senate voting where
 senators ban opponents in round-robin fashion until one party wins.
 """
-import os
-import sys
 import time
-
-# Add the parent directory to sys.path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.dota2_senate import Solution
 

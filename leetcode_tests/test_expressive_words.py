@@ -4,12 +4,7 @@ Comprehensive test suite for LeetCode Problem #809: Expressive Words
 Tests the expressiveWords method which counts how many words can be made
 "expressive" by extending some characters to have at least 3 occurrences.
 """
-import os
-import sys
 import time
-
-# Add the parent directory to sys.path to import the solution
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from leetcode.expressive_words import Solution
 
