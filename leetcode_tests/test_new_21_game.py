@@ -5,18 +5,8 @@ Tests the dynamic programming algorithm for calculating the probability
 that Alice ends with n or fewer points in the New 21 Game.
 """
 import pytest
-import sys
-import os
 
-# Add parent directory to path for imports
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-# Import using exec to handle the non-standard module name
-solution_globals = {}
-with open(os.path.join(os.path.dirname(__file__), '..', 'leetcode', 'new_21_game.py'), 'r') as f:
-    exec(f.read(), solution_globals)
-
-Solution = solution_globals['Solution']
+from leetcode.new_21_game import Solution
 
 
 class TestNew21Game:
