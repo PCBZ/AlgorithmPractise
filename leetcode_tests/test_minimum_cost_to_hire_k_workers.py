@@ -6,7 +6,7 @@ minimum cost to hire exactly K workers.
 """
 import pytest
 
-from leetcode.minimum_cost_to_hire_k_workers import Solution
+from leetcode.minimum_cost_to_hire_k_workers_01 import Solution
 
 
 class TestMinimumCostToHireKWorkers:
