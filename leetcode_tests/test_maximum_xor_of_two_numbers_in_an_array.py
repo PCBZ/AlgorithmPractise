@@ -4,11 +4,6 @@ Comprehensive tests for Maximum XOR of Two Numbers in an Array.
 Tests the Trie-based solution for finding maximum XOR.
 """
 import pytest
-import sys
-import os
-
-# Add parent directory to path for imports
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from leetcode.maximum_xor_of_two_numbers_in_an_array import Solution
 

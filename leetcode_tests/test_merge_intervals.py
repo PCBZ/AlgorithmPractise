@@ -4,11 +4,6 @@ Comprehensive tests for Merge Intervals problem.
 Tests the solution for merging overlapping intervals with various edge cases.
 """
 import pytest
-import sys
-import os
-
-# Add parent directory to path for imports
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from leetcode.merge_intervals import Solution
 

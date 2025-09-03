@@ -4,11 +4,6 @@ Comprehensive tests for Max Points on a Line problem.
 Tests the slope-based solution for finding maximum collinear points.
 """
 import pytest
-import sys
-import os
-
-# Add parent directory to path for imports
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from leetcode.max_points_on_a_line import Solution
 

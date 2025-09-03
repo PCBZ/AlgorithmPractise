@@ -4,7 +4,6 @@ Test module for matchsticks to square problem (LeetCode #473).
 Comprehensive test cases covering backtracking algorithm,
 edge cases, and optimization strategies.
 """
-import pytest
 from leetcode.matchsticks_to_square import Solution
 
 

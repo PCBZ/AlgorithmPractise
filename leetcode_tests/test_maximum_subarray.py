@@ -4,11 +4,6 @@ Comprehensive tests for Maximum Subarray problem.
 Tests the implementation of Kadane's algorithm.
 """
 import pytest
-import sys
-import os
-
-# Add parent directory to path for imports
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from leetcode.maximum_subarray import Solution
 
