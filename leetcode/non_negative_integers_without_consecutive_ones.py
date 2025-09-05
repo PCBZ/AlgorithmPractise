@@ -1,5 +1,7 @@
 """
 LeetCode 600: Non-negative Integers without Consecutive Ones
+https://leetcode.com/problems/non-negative-integers-without-consecutive-ones/
+
 Count integers in [0, n] without consecutive 1s in binary representation.
 """
 
