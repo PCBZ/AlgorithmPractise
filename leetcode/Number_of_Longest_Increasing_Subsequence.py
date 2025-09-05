@@ -1,50 +1,39 @@
+"""
+LeetCode 673: Number of Longest Increasing Subsequence
+https://leetcode.com/problems/number-of-longest-increasing-subsequence/
+
+Find the number of longest increasing subsequences.
+"""
+
 from typing import List
 
+
 class Solution:
-    def lengthOfLIS(self, nums: List[int]) -> int:
-        n = len(nums)
-        dp = [1] * n
-        for i in range(n):
-            for j in range(i):
-                if nums[i] > nums[j]:
-                    dp[i] = max(dp[i], dp[j] + 1)
-        return max(dp)
+    """Solution for Number of Longest Increasing Subsequence problem."""
 
-    def findNumberOfLIS(self, nums: List[int]) -> int:
+    def findNumberOfLIS(self, nums: List[int]) -> int:  # pylint: disable=invalid-name
+        """Find number of longest increasing subsequences using DP."""
+        if not nums:
+            return 0
+
         n = len(nums)
-        dp = [1] * n
-        count = [1] * n
+        lengths = [1] * n  # Length of LIS ending at each position
+        counts = [1] * n   # Count of LIS ending at each position
 
         for i in range(n):
             for j in range(i):
                 if nums[i] > nums[j]:
-                    if dp[j] + 1 > dp[i]:
-                        dp[i] = dp[j] + 1
-                        count[i] = count[j]
-                    elif dp[j] + 1 == dp[i]:
-                        count[i] += count[j]
-        max_len = max(dp)
-        return sum(count[i] for i in range(n) if dp[i] == max_len)
-    
-    def findLengthOfLCIS(self, nums: List[int]) -> int:
-        start = 0
-        n = len(nums)
-        total_max = 1
-        for end in range(1, n):
-            if nums[end] > nums[start]:
-                cur_max = end - start + 1
-                total_max = max(cur_max, total_max)
-            else:
-                start = end
-                cur_max = 1
-        return total_max
+                    if lengths[j] + 1 > lengths[i]:
+                        lengths[i] = lengths[j] + 1
+                        counts[i] = counts[j]
+                    elif lengths[j] + 1 == lengths[i]:
+                        counts[i] += counts[j]
+
+        max_length = max(lengths)
+        return sum(counts[i] for i in range(n) if lengths[i] == max_length)
 
 
 if __name__ == "__main__":
-    s = Solution()
-    nums = [1,3,5,4,7]
-    print(s.lengthOfLIS(nums))
-    print(s.findNumberOfLIS(nums))
-    print(s.findLengthOfLCIS(nums))
-
-    
+    solution = Solution()
+    test_nums = [1, 3, 5, 4, 7]
+    print(solution.findNumberOfLIS(test_nums))
