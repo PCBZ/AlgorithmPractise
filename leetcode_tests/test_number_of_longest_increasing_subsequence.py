@@ -5,7 +5,7 @@ Test cases for LeetCode 673: Number of Longest Increasing Subsequence
 import pytest
 from typing import List
 
-from leetcode.number_of_longest_increasing_subsequence_01 import Solution
+from leetcode.number_of_longest_increasing_subsequence import Solution
 
 
 class TestNumberOfLongestIncreasingSubsequence:
