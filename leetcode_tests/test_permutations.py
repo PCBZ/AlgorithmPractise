@@ -1,5 +1,7 @@
 """
-Test cases for LeetCode Problem 46: Permutations.
+Test cases for LeetCode Problems:
+46: Permutations 
+47: Permutations II
 """
 
 import pytest
@@ -172,3 +174,104 @@ class TestPermutations:
             result = self.solution.permute(nums)
             expected_count = math.factorial(n)
             assert len(result) == expected_count, f"For {n} elements, expected {expected_count} permutations"
+
+
+class TestPermutationsII:
+    """Test class for permutations II problem (with duplicates)."""
+
+    def setup_method(self):
+        """Set up test fixtures."""
+        self.solution = Solution()
+
+    def test_basic_duplicates(self):
+        """Test basic case with duplicates."""
+        nums = [1, 1, 2]
+        result = self.solution.permuteUnique(nums)
+        expected = [[1, 1, 2], [1, 2, 1], [2, 1, 1]]
+        
+        assert len(result) == 3
+        # Check all expected permutations are present
+        for perm in expected:
+            assert perm in result
+
+    def test_all_same_elements(self):
+        """Test case where all elements are identical."""
+        nums = [1, 1, 1]
+        result = self.solution.permuteUnique(nums)
+        expected = [[1, 1, 1]]
+        
+        assert result == expected
+
+    def test_no_duplicates(self):
+        """Test case with no duplicates (should work like regular permute)."""
+        nums = [1, 2, 3]
+        result = self.solution.permuteUnique(nums)
+        
+        assert len(result) == 6  # 3! = 6
+        # Should have same count as regular permute
+        regular_result = self.solution.permute(nums)
+        assert len(result) == len(regular_result)
+
+    def test_two_pairs_duplicates(self):
+        """Test case with two pairs of duplicates."""
+        nums = [1, 1, 2, 2]
+        result = self.solution.permuteUnique(nums)
+        expected = [
+            [1, 1, 2, 2], [1, 2, 1, 2], [1, 2, 2, 1],
+            [2, 1, 1, 2], [2, 1, 2, 1], [2, 2, 1, 1]
+        ]
+        
+        assert len(result) == 6
+        # Check all expected permutations are present
+        for perm in expected:
+            assert perm in result
+
+    def test_single_element(self):
+        """Test single element."""
+        nums = [1]
+        result = self.solution.permuteUnique(nums)
+        expected = [[1]]
+        
+        assert result == expected
+
+    def test_empty_list(self):
+        """Test empty list."""
+        nums = []
+        result = self.solution.permuteUnique(nums)
+        expected = [[]]
+        
+        assert result == expected
+
+    def test_no_duplicate_results(self):
+        """Test that no duplicate permutations are returned."""
+        nums = [1, 1, 2, 2]
+        result = self.solution.permuteUnique(nums)
+        
+        # Convert to tuples for hashable comparison
+        result_tuples = [tuple(perm) for perm in result]
+        unique_results = set(result_tuples)
+        
+        assert len(result_tuples) == len(unique_results), "Duplicate permutations found"
+
+    def test_negative_numbers_with_duplicates(self):
+        """Test negative numbers with duplicates."""
+        nums = [-1, -1, 0]
+        result = self.solution.permuteUnique(nums)
+        
+        assert len(result) == 3
+        # Should contain unique permutations only
+        result_set = set(tuple(perm) for perm in result)
+        assert len(result_set) == 3
+
+    def test_large_input_with_duplicates(self):
+        """Test larger input with duplicates."""
+        nums = [1, 1, 2, 2, 3]
+        result = self.solution.permuteUnique(nums)
+        
+        # Should be less than 5! = 120 due to duplicates
+        assert len(result) < 120
+        assert len(result) > 0
+        
+        # Check no duplicates in result
+        result_set = set(tuple(perm) for perm in result)
+        assert len(result_set) == len(result)
