@@ -154,5 +154,52 @@ class TestRemoveDuplicates:
             assert len(result_array) == len(set(result_array))
 
 
+class TestRemoveDuplicatesII:
+    
+    def setup_method(self):
+        self.solution = Solution()
+    
+    def test_example_1(self):
+        nums = [1, 1, 1, 2, 2, 3]
+        result = self.solution.removeDuplicatesII(nums)
+        assert result == 5
+        assert nums[:result] == [1, 1, 2, 2, 3]
+    
+    def test_example_2(self):
+        nums = [0, 0, 1, 1, 1, 1, 2, 3, 3]
+        result = self.solution.removeDuplicatesII(nums)
+        assert result == 7
+        assert nums[:result] == [0, 0, 1, 1, 2, 3, 3]
+    
+    def test_empty_array(self):
+        nums = []
+        result = self.solution.removeDuplicatesII(nums)
+        assert result == 0
+    
+    def test_single_element(self):
+        nums = [1]
+        result = self.solution.removeDuplicatesII(nums)
+        assert result == 1
+        assert nums[:result] == [1]
+    
+    def test_two_same_elements(self):
+        nums = [1, 1]
+        result = self.solution.removeDuplicatesII(nums)
+        assert result == 2
+        assert nums[:result] == [1, 1]
+    
+    def test_three_same_elements(self):
+        nums = [1, 1, 1]
+        result = self.solution.removeDuplicatesII(nums)
+        assert result == 2
+        assert nums[:result] == [1, 1]
+    
+    def test_no_duplicates(self):
+        nums = [1, 2, 3, 4, 5]
+        result = self.solution.removeDuplicatesII(nums)
+        assert result == 5
+        assert nums[:result] == [1, 2, 3, 4, 5]
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

@@ -1,18 +1,16 @@
 """
 LeetCode 26: Remove Duplicates from Sorted Array
-
-Given an integer array nums sorted in non-decreasing order, remove the duplicates
-in-place such that each unique element appears only once. The relative order of
-the elements should be kept the same. Then return the number of unique elements in nums.
+LeetCode 80: Remove Duplicates from Sorted Array II
 
 URL: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+URL: https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
 """
 
 from typing import List
 
 
-class Solution:  # pylint: disable=too-few-public-methods
-    """Solution for Remove Duplicates from Sorted Array problem."""
+class Solution:
+    """Solution for Remove Duplicates from Sorted Array problems."""
 
     def removeDuplicates(self, nums: List[int]) -> int:  # pylint: disable=invalid-name
         """
@@ -31,10 +29,38 @@ class Solution:  # pylint: disable=too-few-public-methods
 
         return write_pos + 1
 
+    def removeDuplicatesII(self, nums: List[int]) -> int:  # pylint: disable=invalid-name
+        """
+        Remove duplicates from sorted array allowing at most 2 duplicates.
+        Time: O(n), Space: O(1)
+        """
+        if not nums:
+            return 0
+
+        write_pos = 0
+        count = 0
+
+        for i, num in enumerate(nums):
+            if i == 0:
+                count = 1
+                write_pos = 1
+            else:
+                if num == nums[i-1]:
+                    count += 1
+                else:
+                    count = 1
+                if count <= 2:
+                    nums[write_pos] = num
+                    write_pos += 1
+
+        return write_pos
+
 
 if __name__ == "__main__":
     sol = Solution()
 
+    # Test LeetCode 26: Remove Duplicates
+    print("=== LeetCode 26: Remove Duplicates ===")
     NUMS1 = [1, 1, 2]
     RESULT1 = sol.removeDuplicates(NUMS1)
     print(f"Test 1: {RESULT1}, array: {NUMS1[:RESULT1]}")
@@ -46,3 +72,13 @@ if __name__ == "__main__":
     NUMS3 = [1]
     RESULT3 = sol.removeDuplicates(NUMS3)
     print(f"Test 3: {RESULT3}, array: {NUMS3[:RESULT3]}")
+
+    # Test LeetCode 80: Remove Duplicates II
+    print("\n=== LeetCode 80: Remove Duplicates II ===")
+    NUMS4 = [0, 0, 1, 1, 1, 1, 2, 3, 3]
+    RESULT4 = sol.removeDuplicatesII(NUMS4)
+    print(f"Test 4: {RESULT4}, array: {NUMS4[:RESULT4]}")
+
+    NUMS5 = [1, 1, 1, 2, 2, 3]
+    RESULT5 = sol.removeDuplicatesII(NUMS5)
+    print(f"Test 5: {RESULT5}, array: {NUMS5[:RESULT5]}")
