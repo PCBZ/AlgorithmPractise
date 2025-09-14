@@ -2,7 +2,7 @@
 
 import pytest
 
-from leetcode.repeated_string_match import Solution
+from leetcode.repeated_string_match_01 import Solution
 
 
 class TestRepeatedStringMatch:
