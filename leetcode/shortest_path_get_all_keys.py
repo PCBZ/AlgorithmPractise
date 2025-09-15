@@ -19,6 +19,10 @@ class Solution:  # pylint: disable=too-few-public-methods
         
         Time: O(m * n * 2^k), Space: O(m * n * 2^k)
         """
+        # Handle edge cases
+        if not grid or not grid[0]:
+            return -1
+            
         m, n = len(grid), len(grid[0])
         keys = set()
         start = None
@@ -31,6 +35,10 @@ class Solution:  # pylint: disable=too-few-public-methods
                 elif "a" <= grid[i][j] <= "z":
                     keys.add(grid[i][j])
         
+        # If no start position found, return -1
+        if start is None:
+            return -1
+            
         # Target state: all keys collected in sorted order        
         all_keys = "".join(sorted(keys))
         
