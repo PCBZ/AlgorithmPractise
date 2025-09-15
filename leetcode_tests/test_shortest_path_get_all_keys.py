@@ -3,7 +3,7 @@ Comprehensive test suite for LeetCode 864: Shortest Path to Get All Keys
 """
 
 import unittest
-from leetcode.shortest_path_get_all_keys_01 import Solution
+from leetcode.shortest_path_get_all_keys import Solution
 
 
 class TestShortestPathAllKeys(unittest.TestCase):
