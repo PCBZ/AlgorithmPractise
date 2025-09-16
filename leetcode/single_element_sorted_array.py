@@ -17,30 +17,20 @@ class Solution:  # pylint: disable=too-few-public-methods
     """Solution using binary search to find the single element."""
     def singleNonDuplicate(self, nums: List[int]) -> int:  # pylint: disable=invalid-name
         """
-        Find the single element using binary search (original implementation).
-        
+        Find the single element using binary search (corrected implementation).
         Time: O(log n), Space: O(1)
         """
-        n = len(nums)  # Store array length
-        left, right = 0, n - 1  # Initialize binary search bounds
-        
-        while left <= right:
-            mid = (left + right) // 2  # Calculate middle index
-            kas = nums[mid]  # Store middle element value
-            
-            # Ensure mid is even for consistent comparison
+        left, right = 0, len(nums) - 1
+        while left < right:
+            mid = (left + right) // 2
+            # Ensure mid is even for pair comparison
             if mid % 2 == 1:
                 mid -= 1
-                
-            # Check if current element matches previous element
-            if nums[mid] == nums[mid-1]:
-                right = mid  # Search in left half
-            # Check if current element matches next element
-            elif nums[mid] == nums[mid+1]:
-                left = mid  # Search in right half
+            if nums[mid] == nums[mid + 1]:
+                left = mid + 2
             else:
-                # Found the single element
-                return nums[mid]
+                right = mid
+        return nums[left]
 
 if __name__ == "__main__":
     solution = Solution()
