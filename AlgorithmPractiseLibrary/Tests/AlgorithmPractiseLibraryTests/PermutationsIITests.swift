@@ -1,5 +1,5 @@
 import XCTest
-@testable import AlgorithmPractise
+@testable import AlgorithmPractiseLibrary
 
 final class PermutationsIITests: XCTestCase {
 

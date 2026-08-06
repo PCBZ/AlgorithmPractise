@@ -1,0 +1,78 @@
+classDiagram
+    class VehicleType {
+        <<enumeration>>
+        Motorcycle
+        Car
+        Truck
+    }
+
+    class SpotType {
+        <<enumeration>>
+        Small
+        Medium
+        Large
+    }
+
+    class IVehicle {
+        <<interface>>
+        + getVehicleType() VehicleType
+        + getLicensePlate() String
+    }
+    class ITicket {
+        <<interface>>
+        + getLicensePlate() String
+        + getCost() Int
+    }
+    class IParkingLot {
+        <<interface>>
+        + park(IVehicle) ITicket throws Exception
+        + unpark(ITicket) throws Exception
+    }
+
+    class IParkingSpot {
+        <<interface>>
+        + getSpotType() SpotType
+        + setVehicle(IVehicle)
+        + getVehicle() IVehicle
+    }
+
+    class AbstractVehicle {
+        <<abstract>>
+        # licensePlate String
+        # vehicleType VehicleType
+    }
+
+    class Car
+    class Motorcycle
+    class Truck
+
+    IVehicle <|.. AbstractVehicle
+    AbstractVehicle <|-- Motorcycle
+    AbstractVehicle <|-- Car
+    AbstractVehicle <|-- Truck
+
+    class ParkingLot {
+        -List~IParkingSpot~ spots
+        -canPark(IVehicle, IParkingLot) boolean
+    }
+
+    class ParkingSpot {
+        -Int id
+        -SpotType type
+        -IVehicle vehicle
+        +isFree() boolean
+    }
+
+    class Ticket {
+        -String licensePlate
+        -Int cost
+    }
+
+    IParkingLot <|.. ParkingLot
+    IParkingSpot <|.. ParkingSpot
+    ITicket <|.. Ticket
+
+    ParkingLot o-- "many" IParkingSpot
+    ParkingSpot o-- "0..1" IVehicle
+    Ticket o-- "1" IVehicle
+

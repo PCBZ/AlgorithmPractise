@@ -13,13 +13,14 @@ class Solution {
                 if used[i] ?? false {
                     continue
                 }
-                if i > 0 && nums[i] == nums[i-1] && !(used[i] ?? false) {
-                    path.append(nums[i])
-                    used[i] = true
-                    backtrack(&path)
-                    path.removeLast()
-                    used[i] = false
+                if i > 0 && sortedNums[i] == sortedNums[i-1] && !(used[i-1] ?? false) {
+                    continue
                 }
+                path.append(sortedNums[i])
+                used[i] = true
+                backtrack(&path)
+                path.removeLast()
+                used[i] = false
             }
         }
         var path = [Int]()

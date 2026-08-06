@@ -38,7 +38,8 @@ final class LongestSubstringWithoutRepeatingCharactersTests: XCTestCase {
     }
 
     func testWithSpaces() {
-        XCTAssertEqual(solution.lengthOfLongestSubstring("a b c d"), 4) // "a b c" or " bcd" etc — longest unique run
+        // spaces repeat, longest window is "a b" or "b c" etc. = 3
+        XCTAssertEqual(solution.lengthOfLongestSubstring("a b c d"), 3)
     }
 
     func testWithNumbers() {
