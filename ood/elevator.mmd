@@ -1,0 +1,63 @@
+classDiagram
+    class IElevatorManager {
+        <<interface>>
+        + handle_inner_request(InnerRequest)
+        + handle_external_request(ExternalRequest)
+
+        + move()
+    }
+
+    class Direction {
+        <<enumeration>>
+        IDLE
+        Up
+        Down
+    }
+
+    class IElevator {
+        <<interface>>
+        + getDirection() Direction
+        + getCurrentFloor() int
+        + isDoorOpen() boolean
+        + addStop(int)
+
+        + move()
+    }
+
+    class InnerRequest {
+        <<struct>>
+        + int toFloor()
+    }
+
+    class ExternalRequest {
+        <<struct>>
+        + getFloor() int
+        + getDirection() Direction
+    }
+
+    class Elevator {
+        - Direction direction
+        - int currentFloor
+        - boolean doorOpen
+        - Deque~int~ stops
+    }
+
+    class ElevatorManager {
+        - List~IElevator~ elevators
+    }
+
+
+    IElevator <|.. Elevator
+    IElevatorManager <|.. ElevatorManager
+
+    ElevatorManager o-- "many" Elevator
+    IElevatorManager o-- "1" Strategy
+
+    class Strategy {
+        <<interface>>
+        + select_elevator(List~IElevator~ elevators, ExternalRequest)
+    }
+
+    class DefaultStrategy {}
+
+    Strategy <|.. DefaultStrategy
