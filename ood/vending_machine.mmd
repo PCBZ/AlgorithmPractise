@@ -1,0 +1,95 @@
+classDiagram
+    class IItem {
+        <<interface>>
+        + getID() int
+        + getPrice() int
+        + getCount() int
+    }
+
+    class MachineResult {
+        <<struct>>
+        + boolean isSuccess
+        + string errorMsg
+        + int refund
+        + IItem item
+    }
+
+    class IMachineState {
+        <<interface>>
+        + pay(int) MachineResult
+        + purchase(int) MachineResult
+        + dispense() MachineResult
+        + withDraw() int
+    }
+
+    class IDLEMachineState {}
+    class INSERTINGMachineState {}
+    class PURCHASINGMachineState {}
+
+    class IMachine {
+        <<interface>>
+        + getItems() List~IItem~
+
+        + withdraw() int
+
+        + purchase(int) MachineResult
+
+        - Date timeout
+        - Timer timer
+        - updateTimeout()
+        - handleTimeout()
+    }
+
+    class Machine {
+        - List~IItem~ items
+
+        - IChangeDispenser changeDispenser
+
+        - IMachineState state
+
+        - IPayment payment
+    }
+
+
+    class IChangeDispenser {
+        <<interface>>
+        + updateMoney(int)
+        + spend(int)
+        + canSpend(int) boolan
+    }
+
+    class ChangeDispenser {
+        - int insertedMoney
+        - Map~int, int~ cashes
+    }
+
+    class PayResult {
+        <<struct>>
+        + boolean isSuccess
+        + string errorMesage
+        + int refund
+    }
+
+    class IPayment {
+        <<interface>>
+        + pay(int) PayResult
+    }
+
+    class CashPayment {}
+    class CreditCardPayment {}
+
+    IItem <|.. Item
+    IMachine <|.. Machine
+    IMachine o-- "1" IMachineState
+    IMachine o-- IChangeDispenser
+    IMachine o-- "many" IItem
+    IMachineState o-- "1" MachineResult
+
+    IMachineState <|.. IDLEMachineState
+    IMachineState <|.. INSERTINGMachineState
+    IMachineState <|.. PURCHASINGMachineState
+
+    IChangeDispenser <|.. ChangeDispenser
+
+    IPayment <|.. CashPayment
+    IPayment <|.. CreditCardPayment
