@@ -1,0 +1,72 @@
+classDiagram
+    class LockerSize {
+        SMALL = 1
+        MEDIAUM = 2
+        LARGE = 3
+    }
+
+    class LockerCode {
+        + int customerID
+        + string code
+    }
+
+    class ILocker {
+        <<interface>>
+        + getID() int
+        + getSize() LockerSize
+        + isEmpty() boolean
+        + getLockerCode() LockerCode
+
+        + handleTimeout()
+    }
+
+    class Locker {
+        - int id
+        - LockerSize size
+        - boolean empty
+        - LockerCode lockerCode
+
+        - Timer timer
+    }
+
+    ILocker <|.. Locker
+    ILocker ..> LockerSize : uses
+    ILocker ..> LockerCode : uses
+
+    class LockerResult {
+        <<struct>>
+        + boolean isSuccess 
+        + ILocker locker
+        + string errorMsg
+        + LockerCode code
+    }
+
+    class IStore {
+        <<interface>>
+        + getID() int
+        + dropOffPackage(LockerSize) LockerResult
+        + pickupPackage(LockerCode) LockerResult
+    }
+
+    class Store {
+        - int id
+        - Map~LockerSize, List~ILocker~~ lockers
+    }
+
+    IStore <|.. Store
+    IStore o-- "many" ILocker
+    IStore ..> LockerResult : uses
+
+```python
+def dropOffPackage(size: LockerSize) -> LockerResult:
+    sizes = [size.value for size in LockerSize]
+    for value in sizes:
+        if value >= size.value:
+            locker = next((locker for locker in lockers if locker.isEmpty), None)
+            if locker:
+                return LockerResult(true, locker, None, generate_code())
+    return LockerResult(false, None, "no space", None)
+```
+
+
+

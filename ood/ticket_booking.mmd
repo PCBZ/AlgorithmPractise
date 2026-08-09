@@ -1,0 +1,57 @@
+classDiagram
+    class ISeat {
+        <<interface>>
+        + getID() int
+        + getScreenID() int
+        + getTheatreID() int
+    }
+
+    class Seat {
+        - int id
+        - int screenID
+        - int threatreID
+    }
+
+    class IBookingSystem {
+        <<interface>>
+        + select(ISeat, int)
+        + deselect(ISeat, int)
+        + buy(ISeat, int) boolean
+        + isAvailable(ISeat, int) boolean
+    }
+
+    class BookingSystem {
+        - Map~ISeat, int~ seat_showtime
+
+        - ISeatLockService
+    }
+
+    class ISeatLockService {
+        <<interface>>
+        + lockSeat(int, int) boolean
+        + unlockSeat(int, int)
+        + isSeatAvailable(int, int) boolean
+    }
+
+    class DefaultSeatLockService {}
+
+    class ISeatDatabaseService {
+        <<interface>>
+        + setSeatSold(int, int, boolean)
+        + isSeatSold(int, int) boolean
+    }
+
+    class DefaultSeatDatabaseService {}
+
+    ISeat <|..Seat
+    IBookingSystem <|.. BookingSystem
+    ISeatLockService <|.. DefaultSeatLockService
+    ISeatDatabaseService <| .. DefaultSeatDatabaseService
+
+    IBookingSystem o-- "many" ISeat
+    BookingSystem o-- "1" ISeatLockService
+    BookingSystem o-- "1" ISeatDatabaseService
+
+
+
+
