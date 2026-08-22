@@ -1,0 +1,28 @@
+classDiagram
+
+    class DatabaseInstanceStateACKResult {
+        + boolean success
+        + string error
+        + IDatabaseInstanceState state
+    }
+
+    class DatabaseInstanceStateOperationResult {
+        <<struct>>
+        + int id
+        + string error
+        + IDatabaseInstanceState state
+    }
+
+    class IDatabaseInstanceState {
+        <<interface>>
+        + modify() DatabaseInstanceStateACKResult
+        + backup() DatabaseInstanceStateACKResult
+        + delete() DatabaseInstanceStateACKResult
+        + retry() DatabaseInstanceStateACKResult
+ 
+        + didComplete() DatabaseInstanceStateOperationResult
+        + didFail() DatabaseInstanceStateOperationResult
+    }
+
+    IDatabaseInstanceState --> DatabaseInstanceStateACKResult : uses
+    IDatabaseInstanceState --> DatabaseInstanceStateOperationResult : uses

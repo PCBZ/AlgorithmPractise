@@ -1,0 +1,109 @@
+classDiagram
+    class Table {
+        <<struct>>
+        - int id
+        - int capacity
+    }
+
+    class OrderState {
+        Ordered
+        Preparing
+        Served
+        Paid
+    }
+
+    class Order {
+        <<struct>>
+        - int id
+        - int tableID
+        - Map~Dish, int~ dishes
+    }
+
+    class Dish {
+        <<struct>>
+        - int id
+        - int price
+        - int count
+    }
+
+    class MenuService {
+        <<interface>>
+        + getDishes() Map~Dish, int~
+        + updateDish(int, int)
+    }
+
+    class MenuServiceImpl {}
+
+    MenuService <|.. MenuServiceImpl
+
+    class Reservation {
+        <<struct>>
+        + int id
+        + int customerCount
+        + Date date
+    }
+
+    class ReservationResult {
+        <<struct>>
+        + boolean isSuccess
+        + Table table
+        + errorMsg
+    }
+
+    class ReservationManager {
+        <<interface>>
+        + reserve(Reservation) ReservationResult
+        + cancel(int) ReservationResult
+    }
+
+    class ReservationManagerImpl {
+        - Map~Table, int~
+    }
+
+    ReservationManager <|.. ReservationManagerImpl
+    ReservationManager ..> ReservationResult : uses
+    ReservationManager ..> Table : uses
+    ReservationManager ..> Reservation : uses
+
+    class OrderService {
+        <<interface>>
+        + createOrder(Order) Order
+        + getOrder(int) Order
+        + payOrder(int) Order
+
+        + addDish(int, Dish) Order
+        + deleteDish(int, Dish) Order
+    }
+
+    class OrderServiceImpl {}
+
+    class OrderResult {
+        + boolean isSuccess
+        + Order order
+        + string errorMsg
+    }
+
+    class OrderManager {
+        <<interface>>
+        + createOrder(int, Map~int, int~) OrderResult
+        + placeOrder(int) OrderResult
+        + getOrder(int) OrderResult
+        + payOrder(int) OrderResult
+
+        + updateDish(int, int, int) OrderResult
+    }
+
+    class OrderManagerImpl {
+        - OrderService orderService
+        - MenuService menuService
+    }
+
+    OrderService <|.. OrderServiceImpl
+    OrderService ..> Order : uses
+    Order ..> OrderState : uses
+    Order o-- "1" Table
+    Order o-- "many" Dish
+    OrderManager <|.. OrderManagerImpl
+    OrderManager o-- "1" MenuService
+    OrderManager o-- "1" OrderService
+

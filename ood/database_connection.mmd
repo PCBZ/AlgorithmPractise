@@ -1,0 +1,36 @@
+classDiagram
+    class ConnectionState {
+        IDLE
+        ACTIVE
+    }
+
+
+    class Connection {
+        <<struct>>
+        + int id
+        + ConnectionState state
+        + Time createdAt
+        + Time lastUpdate
+
+        + check_health() boolean
+    }
+
+    class IConnectionPool {
+        <<interface>>
+        + acquire() Connection
+        + release(int)
+    }
+
+    class ConnectionPool {
+        - Deque~Connection~ idle_connections
+        - Map~int, Connection~ active_connections
+
+        - Semaphare sema
+
+        - int min_size
+        - int max_size
+    }
+
+    IConnectionPool <|.. ConnectionPool
+    Connection ..> ConnectionState : uses
+    ConnectionPool o-- "many" Connection
