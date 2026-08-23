@@ -1,0 +1,53 @@
+classDiagram
+    class CommandResult {
+        <<struct>>
+        + boolean isSuccess
+        + string error
+    }
+
+    class ICommand {
+        <<interface>>
+        + execute() CommandResult
+        + undo() CommandResult
+    }
+
+    class CreateInstanceCommand
+    class BackupCommand
+    class DeleteCommand
+
+    ICommand <|.. CreateInstanceCommand
+    ICommand <|.. BackupCommand
+    ICommand <|.. DeleteCommand
+    ICommand ..> CommandResult : uses
+
+    class ICommandExecutor {
+        <<interface>>
+        + submit(ICommand, ICommandRetryStrategy)
+    }
+
+    class CommandExecutor {
+        - Deque~ICommand~ queue
+        - ICommandLogger logger
+    }
+
+    ICommandExecutor <|.. CommandExecutor
+    CommandExecutor ..> ICommandLogger : uses
+    CommandExecutor o-- "many" ICommand
+
+    class ICommandLogger {
+        <<interface>>
+        + log(Command, string) string
+    }
+
+    class ICommandRetryStrategy {
+        <<interface>>
+        + shouldRetry(int attemp, string error) boolean
+        + delay(int) int
+    }
+
+    ICommandRetryStrategy <|.. DefaultCommandRetryStrategy
+
+    ICommandExecutor ..> ICommandRetryStrategy : uses
+
+    ICommandLogger <|.. DefaultCommandLogger
+
