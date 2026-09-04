@@ -1,0 +1,41 @@
+classDiagram
+    class IBackup {
+        <<interface>>
+        + getId() int
+        + getTime() int
+        + getSize() int
+
+        + restore()
+    }
+
+    class AbstractBackup {
+        <<abstract>>
+        + int id
+        + Time time
+        + int size
+    }
+
+    class FullBackup {
+        
+    }
+
+    class IncrementalBackup {
+        + int parentId
+    }
+
+    IBackup <| .. AbstractBackup
+    AbstractBackup <|-- FullBackup
+    AbstractBackup <|-- IncrementalBackup
+
+    class BackupService {
+        + restoreTo(int)
+        + restoreTo(Time)
+        + restoreToPrevious()
+
+        + int maxLength
+
+        - Map~int, IBackup~ backups
+    }
+
+    BackupService --> IBackup : uses
+
